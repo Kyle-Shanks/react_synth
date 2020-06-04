@@ -104,15 +104,12 @@ class Sequencer extends React.Component {
         this.setState({ seqOn: true, seqIdx: 0 }, this.timeoutFunc);
     }
     seqOff = () => {
-        console.log(this.state.seqTimeout);
         clearTimeout(this.state.seqTimeout);
         this.props.noteOff();
         this.setState({ seqOn: false }, this.props.engageKeyboard);
     }
 
     render() {
-        window.tryAThing = this.seqOn;
-
         return (
             <ComponentContainer className={`${this.BASE_CLASS_NAME} ${this.props.className}`.trim()}>
                 <ControlContainer>
