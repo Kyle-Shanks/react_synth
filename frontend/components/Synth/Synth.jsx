@@ -81,7 +81,7 @@ class Synth extends React.Component {
                 filterQ: 0,
                 filterAttack: 0,
                 filterDecay: 0,
-                filterAmount: 0,
+                filterEnvAmount: 0,
                 reverbType: 'reverb1',
                 reverbAmount: 0,
                 portamentoSpeed: 0,
@@ -118,7 +118,7 @@ class Synth extends React.Component {
                 filterQ: 0,
                 filterAttack: 0.39,
                 filterDecay: 0.39,
-                filterAmount: 909.09,
+                filterEnvAmount: 909.09,
                 reverbType: 'reverb4',
                 reverbAmount: 0.125,
                 portamentoSpeed: 0,
@@ -155,7 +155,7 @@ class Synth extends React.Component {
                 filterQ: 0,
                 filterAttack: 0,
                 filterDecay: 0,
-                filterAmount: 0,
+                filterEnvAmount: 0,
                 reverbType: 'reverb4',
                 reverbAmount: 0.14015151515151514,
                 portamentoSpeed: 0,
@@ -192,7 +192,7 @@ class Synth extends React.Component {
                 filterQ: 1.931818181818183,
                 filterAttack: 0,
                 filterDecay: 0,
-                filterAmount: 0,
+                filterEnvAmount: 0,
                 reverbType: 'reverb4',
                 reverbAmount: 0.23863636363636365,
                 portamentoSpeed: 0.01,
@@ -229,7 +229,7 @@ class Synth extends React.Component {
                 filterQ: 0,
                 filterAttack: 0,
                 filterDecay: 0.17,
-                filterAmount: 2454.55,
+                filterEnvAmount: 2454.55,
                 reverbType: 'reverb1',
                 reverbAmount: 0.23484848484848486,
                 portamentoSpeed: 0,
@@ -266,7 +266,7 @@ class Synth extends React.Component {
                 filterQ: 0,
                 filterAttack: 0,
                 filterDecay: 0,
-                filterAmount: 0,
+                filterEnvAmount: 0,
                 reverbType: 'reverb4',
                 reverbAmount: 0.11,
                 portamentoSpeed: 0,
@@ -303,7 +303,7 @@ class Synth extends React.Component {
                 filterQ: 0,
                 filterAttack: 0,
                 filterDecay: 0,
-                filterAmount: 0,
+                filterEnvAmount: 0,
                 reverbType: 'reverb6',
                 reverbAmount: 0.7537878787878788,
                 portamentoSpeed: 0.025,
@@ -340,7 +340,7 @@ class Synth extends React.Component {
                 filterQ: 2.3863636363636367,
                 filterAttack: 0,
                 filterDecay: 0.17424242424242425,
-                filterAmount: 4818.181818181823,
+                filterEnvAmount: 4818.181818181823,
                 reverbType: 'reverb4',
                 reverbAmount: 0.17045454545454544,
                 portamentoSpeed: 0,
@@ -351,6 +351,43 @@ class Synth extends React.Component {
                 bitCrushDepth: 8,
                 bitCrushAmount: 0
             },
+            'NostalgiaWave': {
+                masterVolume: 0.85,
+                gainAttack: 0,
+                gainDecay: 0,
+                gainSustain: 0.7,
+                gainRelease: 0.3787878787878788,
+                vcoType: 'sawtooth',
+                vcoGain: 1,
+                vcoPan: 0,
+                sub1Type: 'sawtooth',
+                sub1Offset: 10,
+                sub1Pan: 0,
+                sub1Gain: 1,
+                sub2Type: 'sawtooth',
+                sub2Offset: 15,
+                sub2Pan: 0,
+                sub2Gain: 1,
+                delayTime: 0.17424242424242425,
+                delayFeedback: 0.7765151515151515,
+                delayTone: 3483.333333333333,
+                delayAmount: 0.20833333333333334,
+                filterType: 'lowpass',
+                filterFreq: 166.66666666666666,
+                filterQ: 1.7045454545454544,
+                filterAttack: 0.05303030303030303,
+                filterDecay: 0.3106060606060606,
+                filterEnvAmount: 4181.818181818182,
+                reverbType: 'reverb4',
+                reverbAmount: 0.2,
+                portamentoSpeed: 0,
+                distortionDist: 0,
+                distortionAmount: 0,
+                vibratoDepth: 9.090909090909092,
+                vibratoRate: 34.6590909090909,
+                bitCrushDepth: 4,
+                bitCrushAmount: 0.015151515151515152
+            }
         };
 
         // Component State
@@ -586,7 +623,7 @@ class Synth extends React.Component {
             sub2Offset,
             filterAttack,
             filterDecay,
-            filterAmount,
+            filterEnvAmount,
         } = this.state;
 
         // Set note frequency
@@ -616,10 +653,10 @@ class Synth extends React.Component {
         }
 
         // Filter Envelope AD
-        if (filterAmount) {
+        if (filterEnvAmount) {
             if (filterAttack) {
                 this.filterNode.setDetune(0); // Reset Detune
-                this.filterNode.setDetune(filterAmount, filterAttack); // Attack
+                this.filterNode.setDetune(filterEnvAmount, filterAttack); // Attack
                 const timeoutId = setTimeout(() => {
                     // If attack is complete and the note is still held, decay
                     if (noteCopy === this.state.noteHeld) {
@@ -628,7 +665,7 @@ class Synth extends React.Component {
                 }, (filterAttack * 1000));
                 this.timeoutIds.push(timeoutId);
             } else {
-                this.filterNode.setDetune(filterAmount); // Reset Detune
+                this.filterNode.setDetune(filterEnvAmount); // Reset Detune
                 this.filterNode.setDetune(0, filterDecay); // Decay
             }
         }
@@ -1029,11 +1066,11 @@ class Synth extends React.Component {
                                 modifier={2}
                             />
                             <Knob
-                                label="Amount"
+                                label="Env Amt"
                                 onUpdate={val => {
-                                    this.setState({ filterAmount: val });
+                                    this.setState({ filterEnvAmount: val });
                                 }}
-                                value={this.state.filterAmount}
+                                value={this.state.filterEnvAmount}
                                 modifier={12000}
                                 type={2}
                             />
@@ -1046,8 +1083,8 @@ class Synth extends React.Component {
                                     this.setState({ bitCrushDepth: val });
                                 }}
                                 value={this.state.bitCrushDepth}
-                                modifier={12}
-                                offset={4}
+                                modifier={14}
+                                offset={2}
                                 isRounded
                             />
                             <Knob

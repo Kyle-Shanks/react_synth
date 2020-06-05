@@ -26,6 +26,7 @@ class BitCrusher {
 
     // Setters
     setBitDepth = bitDepth => {
+        if (bitDepth === this.node.bits) return false;
         this.node.bits = bitDepth; // between 1 and 16
         this.node.normfreq = 0.1; // between 0.0 and 1.0
 
