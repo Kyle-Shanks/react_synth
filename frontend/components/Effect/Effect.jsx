@@ -18,7 +18,7 @@ const Effect = ({ className, children, label, width }) => {
 Effect.propTypes = {
     className: PropTypes.string,
     label: PropTypes.string.isRequired,
-    width: PropTypes.oneOf([1,2,4]),
+    width: PropTypes.oneOf([1,2,3,4]),
 };
 
 Effect.defaultProps = {

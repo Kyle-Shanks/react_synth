@@ -32,6 +32,11 @@ class Filter {
     setGain = val => {
         this.node.gain.setValueAtTime(val, this.AC.currentTime);
     }
+    setDetune = (val, time = 0) => {
+        time
+            ? this.node.detune.setTargetAtTime(val, this.AC.currentTime, time)
+            : this.node.detune.setValueAtTime(val, this.AC.currentTime);
+    }
 }
 
 export default Filter;

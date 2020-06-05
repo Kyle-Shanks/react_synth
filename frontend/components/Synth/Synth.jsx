@@ -39,6 +39,7 @@ class Synth extends React.Component {
 
         // Setting up oscillators
         this.osc = new Nodes.Oscillator(this.AC);
+        this.oscPanner = new Nodes.StereoPanner(this.AC);
         this.sub1 = new Nodes.Oscillator(this.AC);
         this.sub1Panner = new Nodes.StereoPanner(this.AC);
         this.sub2 = new Nodes.Oscillator(this.AC);
@@ -62,6 +63,7 @@ class Synth extends React.Component {
                 gainRelease: 0,
                 vcoType: 'sawtooth',
                 vcoGain: 1,
+                vcoPan: 0,
                 sub1Type: 'sawtooth',
                 sub1Offset: 0,
                 sub1Pan: 0,
@@ -77,7 +79,9 @@ class Synth extends React.Component {
                 filterType: 'lowpass',
                 filterFreq: 6000,
                 filterQ: 0,
-                filterGain: 0,
+                filterAttack: 0,
+                filterDecay: 0,
+                filterAmount: 0,
                 reverbType: 'reverb1',
                 reverbAmount: 0,
                 portamentoSpeed: 0,
@@ -96,6 +100,7 @@ class Synth extends React.Component {
                 gainRelease: 0.37424242424242427,
                 vcoType: 'sawtooth',
                 vcoGain: 0.8,
+                vcoPan: 0,
                 sub1Type: 'sawtooth',
                 sub1Offset: 3,
                 sub1Pan: 0,
@@ -110,8 +115,10 @@ class Synth extends React.Component {
                 delayAmount: 0,
                 filterType: 'lowpass',
                 filterFreq: 2400,
-                filterQ: 0,
-                filterGain: 0,
+                filterQ: 1,
+                filterAttack: 0.39,
+                filterDecay: 0.39,
+                filterAmount: 1636.36,
                 reverbType: 'reverb4',
                 reverbAmount: 0.125,
                 portamentoSpeed: 0,
@@ -130,6 +137,7 @@ class Synth extends React.Component {
                 gainRelease: 0.2,
                 vcoType: 'triangle',
                 vcoGain: 1,
+                vcoPan: 0,
                 sub1Type: 'sawtooth',
                 sub1Offset: 0,
                 sub1Pan: 0,
@@ -145,7 +153,9 @@ class Synth extends React.Component {
                 filterType: 'lowpass',
                 filterFreq: 2983.3333333333367,
                 filterQ: 0,
-                filterGain: 0,
+                filterAttack: 0,
+                filterDecay: 0,
+                filterAmount: 0,
                 reverbType: 'reverb4',
                 reverbAmount: 0.14015151515151514,
                 portamentoSpeed: 0,
@@ -164,6 +174,7 @@ class Synth extends React.Component {
                 gainRelease: 0.38939393939393946,
                 vcoType: 'square',
                 vcoGain: 0.6667,
+                vcoPan: 0,
                 sub1Type: 'square',
                 sub1Offset: 7,
                 sub1Pan: 0,
@@ -179,7 +190,9 @@ class Synth extends React.Component {
                 filterType: 'lowpass',
                 filterFreq: 1650,
                 filterQ: 1.931818181818183,
-                filterGain: 0,
+                filterAttack: 0,
+                filterDecay: 0,
+                filterAmount: 0,
                 reverbType: 'reverb4',
                 reverbAmount: 0.23863636363636365,
                 portamentoSpeed: 0.01,
@@ -198,6 +211,7 @@ class Synth extends React.Component {
                 gainRelease: 0.2,
                 vcoType: 'square',
                 vcoGain: 0.8484848484848485,
+                vcoPan: 0,
                 sub1Type: 'square',
                 sub1Offset: 0,
                 sub1Pan: 0,
@@ -207,13 +221,15 @@ class Synth extends React.Component {
                 sub2Pan: 0,
                 sub2Gain: 0.571969696969697,
                 delayTime: 0.1856060606060606,
-                delayFeedback: 0.7272727272727273,
+                delayFeedback: 0.67,
                 delayTone: 2566.6666666666674,
-                delayAmount: 0.23106060606060605,
+                delayAmount: 0.1666666667,
                 filterType: 'lowpass',
-                filterFreq: 1816.6666666666665,
+                filterFreq: 1108.333,
                 filterQ: 0,
-                filterGain: 0,
+                filterAttack: 0,
+                filterDecay: 0.17,
+                filterAmount: 2454.55,
                 reverbType: 'reverb1',
                 reverbAmount: 0.23484848484848486,
                 portamentoSpeed: 0,
@@ -232,6 +248,7 @@ class Synth extends React.Component {
                 gainRelease: 0.16969696969696973,
                 vcoType: 'sine',
                 vcoGain: 0.8295454545454546,
+                vcoPan: 0,
                 sub1Type: 'sawtooth',
                 sub1Offset: 0,
                 sub1Pan: 0,
@@ -247,7 +264,9 @@ class Synth extends React.Component {
                 filterType: 'lowpass',
                 filterFreq: 2458.3333333333335,
                 filterQ: 0,
-                filterGain: 0,
+                filterAttack: 0,
+                filterDecay: 0,
+                filterAmount: 0,
                 reverbType: 'reverb4',
                 reverbAmount: 0.11,
                 portamentoSpeed: 0,
@@ -258,40 +277,6 @@ class Synth extends React.Component {
                 bitCrushDepth: 8,
                 bitCrushAmount: 0,
             },
-            'Am I Peaking?': {
-                masterVolume: 0.55,
-                gainAttack: 0.36363636363636365,
-                gainDecay: 0.6,
-                gainSustain: 0.07689393939393947,
-                gainRelease: 0.4,
-                vcoType: 'square',
-                vcoGain: 0.6174242424242424,
-                sub1Type: 'sawtooth',
-                sub1Offset: 12,
-                sub1Pan: -0.5393939393939394,
-                sub1Gain: 0.5,
-                sub2Type: 'sawtooth',
-                sub2Offset: -12,
-                sub2Pan: 0.5166666666666667,
-                sub2Gain: 0.5,
-                delayTime: 0,
-                delayFeedback: 0,
-                delayTone: 4400,
-                delayAmount: 0,
-                filterType: 'lowshelf',
-                filterFreq: 2691.666666666665,
-                filterQ: 6.439393939393944,
-                filterGain: 13.446969696969635,
-                reverbType: 'reverb5',
-                reverbAmount: 0.5416666666666666,
-                portamentoSpeed: 0.007575757575757576,
-                distortionDist: 8.75,
-                distortionAmount: 0.6098484848484849,
-                vibratoDepth: 3.0303030303030303,
-                vibratoRate: 2.272727272727273,
-                bitCrushDepth: 12,
-                bitCrushAmount: 0
-            },
             'Mellow Chimes': {
                 masterVolume: 0.8,
                 gainAttack: 0.48484848484848486,
@@ -300,6 +285,7 @@ class Synth extends React.Component {
                 gainRelease: 0.17,
                 vcoType: 'sine',
                 vcoGain: 0.8,
+                vcoPan: 0,
                 sub1Type: 'sine',
                 sub1Offset: 4,
                 sub1Pan: 0.6287878787878788,
@@ -315,7 +301,9 @@ class Synth extends React.Component {
                 filterType: 'lowpass',
                 filterFreq: 1441.6666666666688,
                 filterQ: 0,
-                filterGain: 0,
+                filterAttack: 0,
+                filterDecay: 0,
+                filterAmount: 0,
                 reverbType: 'reverb6',
                 reverbAmount: 0.7537878787878788,
                 portamentoSpeed: 0.025,
@@ -325,40 +313,6 @@ class Synth extends React.Component {
                 vibratoRate: 3.22,
                 bitCrushDepth: 12,
                 bitCrushAmount: 0.03409090909090909
-            },
-            'Crunchy Ping': {
-                masterVolume: 0.75,
-                gainAttack: 0,
-                gainDecay: 0.5151515151515151,
-                gainSustain: 0,
-                gainRelease: 0.5636363636363637,
-                vcoType: 'triangle',
-                vcoGain: 0.7537878787878788,
-                sub1Type: 'sawtooth',
-                sub1Offset: -12,
-                sub1Pan: 0,
-                sub1Gain: 0.16287878787878787,
-                sub2Type: 'triangle',
-                sub2Offset: 0,
-                sub2Pan: 0,
-                sub2Gain: 0,
-                delayTime: 0,
-                delayFeedback: 0,
-                delayTone: 4400,
-                delayAmount: 0,
-                filterType: 'lowshelf',
-                filterFreq: 2291.666666666668,
-                filterQ: 2.159090909090907,
-                filterGain: 2.840909090909071,
-                reverbType: 'reverb4',
-                reverbAmount: 0.3484848484848485,
-                portamentoSpeed: 0,
-                distortionDist: 0,
-                distortionAmount: 0,
-                vibratoDepth: 4.545454545454546,
-                vibratoRate: 34.659090909090935,
-                bitCrushDepth: 4,
-                bitCrushAmount: 0.30303030303030304
             },
         };
 
@@ -410,8 +364,9 @@ class Synth extends React.Component {
         this.distortionNode.connect(this.filterNode.getNode());
 
         // Oscillater and Subs Setup
-        this.osc.connect(this.distortionNode.getDryInput());
-        this.osc.connect(this.distortionNode.getWetInput());
+        this.osc.connect(this.oscPanner.getNode());
+        this.oscPanner.connect(this.distortionNode.getDryInput());
+        this.oscPanner.connect(this.distortionNode.getWetInput());
         this.osc.start();
         this.sub1.connect(this.sub1Panner.getNode());
         this.sub1Panner.connect(this.distortionNode.getDryInput());
@@ -440,6 +395,7 @@ class Synth extends React.Component {
         this.volumeNode.setGain(this.state.masterVolume);
         this.osc.setType(this.state.vcoType);
         this.osc.setGain(this.state.vcoGain);
+        this.oscPanner.setPan(this.state.vcoPan);
         this.sub1.setType(this.state.sub1Type);
         this.sub1.setGain(this.state.sub1Gain);
         this.sub1Panner.setPan(this.state.sub1Pan);
@@ -453,7 +409,6 @@ class Synth extends React.Component {
         this.filterNode.setType(this.state.filterType);
         this.filterNode.setFreq(this.state.filterFreq);
         this.filterNode.setQ(this.state.filterQ);
-        this.filterNode.setGain(this.state.filterGain);
         this.reverbNode.setType(this.state.reverbType);
         this.reverbNode.setAmount(this.state.reverbAmount);
         this.distortionNode.setDistortion(this.state.distortionDist);
@@ -592,6 +547,9 @@ class Synth extends React.Component {
             portamentoSpeed,
             sub1Offset,
             sub2Offset,
+            filterAttack,
+            filterDecay,
+            filterAmount,
         } = this.state;
 
         // Set note frequency
@@ -619,16 +577,36 @@ class Synth extends React.Component {
             const sustVolume = masterVolume * gainSustain;
             this.gainNode.setGain(sustVolume, gainDecay); // Decay
         }
+
+        // Filter Envelope AD
+        if (filterAmount) {
+            if (filterAttack) {
+                this.filterNode.setDetune(0); // Reset Detune
+                this.filterNode.setDetune(filterAmount, filterAttack); // Attack
+                const timeoutId = setTimeout(() => {
+                    // If attack is complete and the note is still held, decay
+                    if (noteCopy === this.state.noteHeld) {
+                        this.filterNode.setDetune(0, this.state.filterDecay); // Decay
+                    }
+                }, (filterAttack * 1000));
+                this.timeoutIds.push(timeoutId);
+            } else {
+                this.filterNode.setDetune(filterAmount); // Reset Detune
+                this.filterNode.setDetune(0, filterDecay); // Decay
+            }
+        }
     }
     noteOff = () => {
         this.clearTimouts();
         this.setState({ noteHeld: 0 });
         this.gainNode.setGain(0, this.state.gainRelease);
+        this.filterNode.setDetune(0, this.state.filterDecay); // Should this be 0 or decay?
     }
     noteStop = () => {
         this.clearTimouts();
         this.setState({ noteHeld: 0 });
         this.gainNode.setGain(0);
+        this.filterNode.setDetune(0);
     }
 
     // Keyboard listeners
@@ -718,7 +696,7 @@ class Synth extends React.Component {
                         </TopSection>
                     </TopBar>
                     <EffectRow>
-                        <Effect label="Osc" width={1}>
+                        <Effect label="Osc" width={2}>
                             <Select
                                 label="Waveform"
                                 onUpdate={waveform => {
@@ -728,6 +706,15 @@ class Synth extends React.Component {
                                 value={this.state.vcoType}
                                 options={selectOptions.waveform}
                                 wide
+                            />
+                            <Knob
+                                label="Pan"
+                                onUpdate={val => {
+                                    this.oscPanner.setPan(val);
+                                    this.setState({ vcoPan: val });
+                                }}
+                                value={this.state.vcoPan}
+                                type={2}
                             />
                             <Knob
                                 label="Gain"
@@ -750,6 +737,15 @@ class Synth extends React.Component {
                                 wide
                             />
                             <Knob
+                                label="Pan"
+                                onUpdate={val => {
+                                    this.sub1Panner.setPan(val);
+                                    this.setState({ sub1Pan: val });
+                                }}
+                                value={this.state.sub1Pan}
+                                type={2}
+                            />
+                            <Knob
                                 label="Offset"
                                 onUpdate={val => {
                                     this.setState({ sub1Offset: val }, () => {
@@ -765,15 +761,6 @@ class Synth extends React.Component {
                                 type={2}
                                 modifier={24}
                                 isRounded
-                            />
-                            <Knob
-                                label="Pan"
-                                onUpdate={val => {
-                                    this.sub1Panner.setPan(val);
-                                    this.setState({ sub1Pan: val });
-                                }}
-                                value={this.state.sub1Pan}
-                                type={2}
                             />
                             <Knob
                                 label="Gain"
@@ -796,6 +783,15 @@ class Synth extends React.Component {
                                 wide
                             />
                             <Knob
+                                label="Pan"
+                                onUpdate={val => {
+                                    this.sub2Panner.setPan(val);
+                                    this.setState({ sub2Pan: val });
+                                }}
+                                value={this.state.sub2Pan}
+                                type={2}
+                            />
+                            <Knob
                                 label="Offset"
                                 onUpdate={val => {
                                     this.setState({ sub2Offset: val }, () => {
@@ -811,15 +807,6 @@ class Synth extends React.Component {
                                 type={2}
                                 modifier={24}
                                 isRounded
-                            />
-                            <Knob
-                                label="Pan"
-                                onUpdate={val => {
-                                    this.sub2Panner.setPan(val);
-                                    this.setState({ sub2Pan: val });
-                                }}
-                                value={this.state.sub2Pan}
-                                type={2}
                             />
                             <Knob
                                 label="Gain"
@@ -959,7 +946,7 @@ class Synth extends React.Component {
                                 value={this.state.delayAmount}
                             />
                         </Effect>
-                        <Effect label="Filter" width={2}>
+                        <Effect label="Filter" width={3}>
                             <Select
                                 label="Type"
                                 onUpdate={filter => {
@@ -989,13 +976,28 @@ class Synth extends React.Component {
                                 modifier={10}
                             />
                             <Knob
-                                label="Gain"
+                                label="Attack"
                                 onUpdate={val => {
-                                    this.filterNode.setGain(val);
-                                    this.setState({ filterGain: val });
+                                    this.setState({ filterAttack: val });
                                 }}
-                                value={this.state.filterGain}
-                                modifier={25}
+                                value={this.state.filterAttack}
+                                modifier={2}
+                            />
+                            <Knob
+                                label="Decay"
+                                onUpdate={val => {
+                                    this.setState({ filterDecay: val });
+                                }}
+                                value={this.state.filterDecay}
+                                modifier={2}
+                            />
+                            <Knob
+                                label="Amount"
+                                onUpdate={val => {
+                                    this.setState({ filterAmount: val });
+                                }}
+                                value={this.state.filterAmount}
+                                modifier={12000}
                                 type={2}
                             />
                         </Effect>

@@ -8,6 +8,7 @@ export const ComponentContainer = styled.div`
     opacity: ${props => props.isActive ? '1' : '0'};
     pointer-events: ${props => props.isActive ? 'all' : 'none'};
     transition: 0.25s ease;
+    text-align: left;
 `;
 
 export const ModalContainer = styled.div`

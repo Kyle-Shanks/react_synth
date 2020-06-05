@@ -63,14 +63,15 @@ export const selectOptions = {
             value: 'notch',
             path: 'M 10 16 L 15 16 L 21 34 L 29 34 L 35 16 L 40 16',
         },
-        {
-            value: 'lowshelf',
-            path: 'M 10 34 L 20 34 L 30 16 L 40 16',
-        },
-        {
-            value: 'highshelf',
-            path: 'M 10 16 L 20 16 L 30 34 L 40 34',
-        },
+        // Need to add the filter gain knob if these are used
+        // {
+        //     value: 'lowshelf',
+        //     path: 'M 10 34 L 20 34 L 30 16 L 40 16',
+        // },
+        // {
+        //     value: 'highshelf',
+        //     path: 'M 10 16 L 20 16 L 30 34 L 40 34',
+        // },
     ],
     reverb: [
         {

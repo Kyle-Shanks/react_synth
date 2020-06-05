@@ -12,6 +12,7 @@ export const ComponentContainer = styled.div`
     ${relaBlock}
     padding: 1rem;
     user-select: none;
+    text-align: center;
 `;
 
 export const InfoToggle = styled.div`
@@ -31,9 +32,8 @@ export const InfoToggle = styled.div`
 `;
 
 export const SynthContainer = styled.div`
-    ${relaBlock}
+    ${relaInline}
     background-color: ${synthBackgroundColor};
-    width: 944px;
     border-radius: 8px;
     margin: 1rem auto;
     padding: 1rem;
@@ -48,14 +48,12 @@ export const EffectColumn = styled.div`
 export const EffectRow = styled.div`
     ${relaBlock}
     display: flex;
-    width: 904px;
     margin: 0 auto;
 `;
 
 export const TopBar = styled.div`
     ${relaBlock}
     display: flex;
-    width: 904px;
     margin: 0 auto 0.25rem;
     text-align: center;
     padding: 0.25rem 0;
