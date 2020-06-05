@@ -20,7 +20,7 @@ const Modal = ({ className, active, onClose }) => {
                 <Header>- Info -</Header>
                 <p>Monophonic synthesizer built with JS Web Audio API and React bc I'm a dumb-dumb</p>
                 <Header>- Top Bar Info -</Header>
-                <p>On the left is the octave modifier for the keyboard.</p>
+                <p>On the left is the octave modifier value for the keyboard.</p>
                 <p>The dropdown in the center is for synth presets.</p>
                 <p>The quantize dropdowns on the right keep the notes of the oscillator and subs in the selected key.</p>
                 <Header>- Commands -</Header>

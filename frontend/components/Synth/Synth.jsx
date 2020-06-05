@@ -782,6 +782,14 @@ class Synth extends React.Component {
                                 wide
                             />
                             <Knob
+                                label="Gain"
+                                onUpdate={val => {
+                                    this.osc.setGain(val);
+                                    this.setState({ vcoGain: val });
+                                }}
+                                value={this.state.vcoGain}
+                            />
+                            <Knob
                                 label="Pan"
                                 onUpdate={val => {
                                     this.oscPanner.setPan(val);
@@ -789,14 +797,6 @@ class Synth extends React.Component {
                                 }}
                                 value={this.state.vcoPan}
                                 type={2}
-                            />
-                            <Knob
-                                label="Gain"
-                                onUpdate={val => {
-                                    this.osc.setGain(val);
-                                    this.setState({ vcoGain: val });
-                                }}
-                                value={this.state.vcoGain}
                             />
                         </Effect>
                         <Effect label="Sub 1" width={2}>
@@ -809,6 +809,14 @@ class Synth extends React.Component {
                                 value={this.state.sub1Type}
                                 options={selectOptions.waveform}
                                 wide
+                            />
+                            <Knob
+                                label="Gain"
+                                onUpdate={val => {
+                                    this.sub1.setGain(val);
+                                    this.setState({ sub1Gain: val });
+                                }}
+                                value={this.state.sub1Gain}
                             />
                             <Knob
                                 label="Pan"
@@ -836,14 +844,6 @@ class Synth extends React.Component {
                                 modifier={24}
                                 isRounded
                             />
-                            <Knob
-                                label="Gain"
-                                onUpdate={val => {
-                                    this.sub1.setGain(val);
-                                    this.setState({ sub1Gain: val });
-                                }}
-                                value={this.state.sub1Gain}
-                            />
                         </Effect>
                         <Effect label="Sub 2" width={2}>
                             <Select
@@ -855,6 +855,14 @@ class Synth extends React.Component {
                                 value={this.state.sub2Type}
                                 options={selectOptions.waveform}
                                 wide
+                            />
+                            <Knob
+                                label="Gain"
+                                onUpdate={val => {
+                                    this.sub2.setGain(val);
+                                    this.setState({ sub2Gain: val });
+                                }}
+                                value={this.state.sub2Gain}
                             />
                             <Knob
                                 label="Pan"
@@ -881,14 +889,6 @@ class Synth extends React.Component {
                                 type={2}
                                 modifier={24}
                                 isRounded
-                            />
-                            <Knob
-                                label="Gain"
-                                onUpdate={val => {
-                                    this.sub2.setGain(val);
-                                    this.setState({ sub2Gain: val });
-                                }}
-                                value={this.state.sub2Gain}
                             />
                         </Effect>
                         <Effect label="Gain Envelope" width={2}>
@@ -985,41 +985,6 @@ class Synth extends React.Component {
                                 value={this.state.distortionAmount}
                             />
                         </Effect>
-                        <Effect label="Delay" width={2}>
-                            <Knob
-                                label="Time"
-                                onUpdate={val => {
-                                    this.delayNode.setDelayTime(val)
-                                    this.setState({ delayTime: val });
-                                }}
-                                value={this.state.delayTime}
-                            />
-                            <Knob
-                                label="Feedback"
-                                onUpdate={val => {
-                                    this.delayNode.setFeedback(val)
-                                    this.setState({ delayFeedback: val });
-                                }}
-                                value={this.state.delayFeedback}
-                            />
-                            <Knob
-                                label="Tone"
-                                onUpdate={val => {
-                                    this.delayNode.setTone(val)
-                                    this.setState({ delayTone: val });
-                                }}
-                                value={this.state.delayTone}
-                                modifier={11000}
-                            />
-                            <Knob
-                                label="Dry/Wet"
-                                onUpdate={val => {
-                                    this.delayNode.setAmount(val)
-                                    this.setState({ delayAmount: val });
-                                }}
-                                value={this.state.delayAmount}
-                            />
-                        </Effect>
                         <Effect label="Filter" width={3}>
                             <Select
                                 label="Type"
@@ -1073,6 +1038,41 @@ class Synth extends React.Component {
                                 value={this.state.filterEnvAmount}
                                 modifier={12000}
                                 type={2}
+                            />
+                        </Effect>
+                        <Effect label="Delay" width={2}>
+                            <Knob
+                                label="Time"
+                                onUpdate={val => {
+                                    this.delayNode.setDelayTime(val)
+                                    this.setState({ delayTime: val });
+                                }}
+                                value={this.state.delayTime}
+                            />
+                            <Knob
+                                label="Feedback"
+                                onUpdate={val => {
+                                    this.delayNode.setFeedback(val)
+                                    this.setState({ delayFeedback: val });
+                                }}
+                                value={this.state.delayFeedback}
+                            />
+                            <Knob
+                                label="Tone"
+                                onUpdate={val => {
+                                    this.delayNode.setTone(val)
+                                    this.setState({ delayTone: val });
+                                }}
+                                value={this.state.delayTone}
+                                modifier={11000}
+                            />
+                            <Knob
+                                label="Dry/Wet"
+                                onUpdate={val => {
+                                    this.delayNode.setAmount(val)
+                                    this.setState({ delayAmount: val });
+                                }}
+                                value={this.state.delayAmount}
                             />
                         </Effect>
                         <Effect label="Crush" width={1}>
