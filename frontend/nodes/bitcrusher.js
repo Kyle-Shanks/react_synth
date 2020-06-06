@@ -28,9 +28,9 @@ class BitCrusher {
     setBitDepth = bitDepth => {
         if (bitDepth === this.node.bits) return false;
         this.node.bits = bitDepth; // between 1 and 16
-        this.node.normfreq = 0.1; // between 0.0 and 1.0
+        this.node.normfreq = 0.25; // between 0.0 and 1.0
 
-        const step = Math.pow(1 / 2, this.node.bits);
+        const step = Math.pow(0.75, this.node.bits);
         let phaser = 0;
         let last = 0;
         this.node.onaudioprocess = (e) => {

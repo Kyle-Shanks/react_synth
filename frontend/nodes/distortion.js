@@ -9,7 +9,7 @@ const createDistCurve = (amount = 0) => {
 
     for (let i = 0; i < n_samples; ++i) {
         x = i * 2 / n_samples - 1;
-        curve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x));
+        curve[i] = (3 + k) * Math.atan(Math.sinh(x * 0.25) * 5) / (Math.PI + k * Math.abs(x));
     }
     return curve;
 };
@@ -22,7 +22,7 @@ class Distortion {
 
         this.node = this.AC.createWaveShaper();
         this.node.curve = createDistCurve();
-        this.node.oversample = '4x';
+        this.node.oversample = 'none';
 
         this.node.connect(this.wetGain.getNode());
 
@@ -47,7 +47,7 @@ class Distortion {
     }
     setAmount = val => {
         this.dryGain.setGain(1 - val);
-        this.wetGain.setGain(val * 2.2);
+        this.wetGain.setGain(val);
     }
 }
 
