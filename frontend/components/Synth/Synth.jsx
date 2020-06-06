@@ -387,7 +387,44 @@ class Synth extends React.Component {
                 vibratoRate: 34.6590909090909,
                 bitCrushDepth: 4,
                 bitCrushAmount: 0.015151515151515152
-            }
+            },
+            'Hard Stab': {
+                masterVolume: 0.8,
+                gainAttack: 0,
+                gainDecay: 0,
+                gainSustain: 0.6,
+                gainRelease: 0.3,
+                vcoType: 'sawtooth',
+                vcoGain: 0.8,
+                vcoPan: 0,
+                sub1Type: 'sawtooth',
+                sub1Offset: 3,
+                sub1Pan: 0,
+                sub1Gain: 0.8,
+                sub2Type: 'sawtooth',
+                sub2Offset: 10,
+                sub2Pan: 0,
+                sub2Gain: 0.8,
+                delayTime: 0.12121212121212122,
+                delayFeedback: 0.75,
+                delayTone: 5233.333333333331,
+                delayAmount: 0.21212121212121213,
+                filterType: 'lowpass',
+                filterFreq: 191.6666666666664,
+                filterQ: 1.1363636363636362,
+                filterAttack: 0,
+                filterDecay: 0.15151515151515152,
+                filterEnvAmount: 4454.544545454549,
+                reverbType: 'reverb4',
+                reverbAmount: 0.125,
+                portamentoSpeed: 0,
+                distortionDist: 25.454545454545457,
+                distortionAmount: 0.29545454545454547,
+                vibratoDepth: 0,
+                vibratoRate: 0,
+                bitCrushDepth: 4,
+                bitCrushAmount: 0.007575757575757576
+            },
         };
 
         // Component State
@@ -750,19 +787,19 @@ class Synth extends React.Component {
                                 }}
                                 value={this.state.quantizationKey}
                             >
-                                <option value={false}>-</option>
+                                <option value="">-</option>
                                 {Object.keys(keyToNoteMap).map(key => (
                                     <option key={`keys_${key}`} value={keyToNoteMap[key]}>{key}</option>
                                 ))}
                             </QSelect>
                             <QSelect
                                 onChange={e => {
-                                    this.setState({ quantizationScale: e.target.value});
+                                    this.setState({ quantizationScale: e.target.value });
                                     e.target.blur();
                                 }}
                                 value={this.state.quantizationScale}
                             >
-                                <option value={false}>-</option>
+                                <option value="">-</option>
                                 {Object.keys(scaleOffsets).map(scale => (
                                     <option key={`scales_${scale}`} value={scale}>{scale}</option>
                                 ))}
