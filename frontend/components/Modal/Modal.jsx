@@ -1,11 +1,6 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import {
-    ComponentContainer,
-    ModalContainer,
-    Header,
-    Note,
-} from './styles';
+import { ComponentContainer, ModalContainer, Header, Note } from './styles';
 
 const Modal = ({ className, active, onClose }) => {
     const BASE_CLASS_NAME = 'Modal';

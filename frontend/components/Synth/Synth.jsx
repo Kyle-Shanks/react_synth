@@ -96,7 +96,7 @@ class Synth extends React.Component {
                 masterVolume: 0.8,
                 gainAttack: 0.3939393939393939,
                 gainDecay: 0.3591,
-                gainSustain: 0,
+                gainSustain: 0.3,
                 gainRelease: 0.37424242424242427,
                 vcoType: 'sawtooth',
                 vcoGain: 0.8,
@@ -388,7 +388,7 @@ class Synth extends React.Component {
                 bitCrushDepth: 4,
                 bitCrushAmount: 0.015151515151515152
             },
-            'Hard Stab': {
+            'Dist Saw Stab': {
                 masterVolume: 0.8,
                 gainAttack: 0,
                 gainDecay: 0,
@@ -570,11 +570,11 @@ class Synth extends React.Component {
 
         analyser.getByteFrequencyData(freqData);
 
-        ctx.fillStyle = 'rgba(5, 21, 25, 1)'; // Fade
+        ctx.fillStyle = 'rgba(23, 33, 32, 1)'; // Fade
         ctx.fillRect(0, 0, width, height);
 
         ctx.lineWidth = 1;
-        ctx.strokeStyle = 'rgb(0, 255, 255)';
+        ctx.strokeStyle = 'rgb(77, 248, 218)';
         ctx.beginPath();
 
         for (let x = 0; x < width; x++) {
@@ -593,11 +593,11 @@ class Synth extends React.Component {
 
         analyser.getByteTimeDomainData(timeData);
 
-        ctx.fillStyle = 'rgba(5, 21, 25, 1)'; // Fade
+        ctx.fillStyle = 'rgba(23, 33, 31, 1)'; // Fade
         ctx.fillRect(0, 0, width, height);
 
         ctx.lineWidth = 1;
-        ctx.strokeStyle = 'rgb(0, 255, 255)';
+        ctx.strokeStyle = 'rgb(77, 248, 218)';
         ctx.beginPath();
 
         // No buffer overrun protection

@@ -19,7 +19,7 @@ export const scaleOffsets = {
     'Major': [0, 2, 4, 5, 7, 9, 11, 12], // Ionian
     'Minor': [0, 2, 3, 5, 7, 8, 10, 12], // Aeolian
 
-    // TODO: Add modes later
+    // TODO: Add other modes later
     // 'Dorian': [],
     // 'Locrian': [],
     // 'Lydian': [],

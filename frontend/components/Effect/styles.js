@@ -4,9 +4,9 @@ import { lightTextColor, effectLabelColor, effectBackgroundColor } from 'fronten
 
 // Widths
 // One knob: 112px
-// Two knob: 225px
-// Three knob: 338px
-// Four knob: 451px
+// Two knobs: 225px
+// Three knobs: 338px
+// Four knobs: 451px
 
 export const ComponentContainer = styled.div`
     ${relaInline}

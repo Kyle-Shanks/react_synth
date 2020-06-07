@@ -1,13 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import {
-    ComponentContainer,
-    Label,
-    InputContainer,
-    Input,
-    Dropdown,
-    DropdownSvg,
-} from './styles';
+import { ComponentContainer, Label, InputContainer, Input, Dropdown, DropdownSvg } from './styles';
 
 const Select = ({ className, value, label, onUpdate, options, wide }) => {
     const BASE_CLASS_NAME = 'Select';

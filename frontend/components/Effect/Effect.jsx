@@ -7,7 +7,7 @@ const Effect = ({ className, children, label, width }) => {
 
     return (
         <ComponentContainer className={`${BASE_CLASS_NAME} ${className}`.trim()}>
-            {label && (<Label width={width}>{label}</Label>)}
+            <Label width={width}>{label}</Label>
             <KnobContainer width={width}>
                 {children}
             </KnobContainer>
@@ -18,7 +18,7 @@ const Effect = ({ className, children, label, width }) => {
 Effect.propTypes = {
     className: PropTypes.string,
     label: PropTypes.string.isRequired,
-    width: PropTypes.oneOf([1,2,3,4]),
+    width: PropTypes.number,
 };
 
 Effect.defaultProps = {
