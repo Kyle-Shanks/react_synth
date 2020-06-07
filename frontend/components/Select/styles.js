@@ -83,7 +83,7 @@ export const Input = styled.div`
 
 export const Dropdown = styled.div`
     z-index: 100;
-    width: ${props => props.wide ? '100px' : 'auto'};
+    width: 100px;
     position: absolute;
     padding: 2px;
     top: 50%;

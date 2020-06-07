@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { ComponentContainer, Label, InputContainer, Input, Dropdown, DropdownSvg } from './styles';
 
-const Select = ({ className, value, label, onUpdate, options, wide }) => {
+const Select = ({ className, value, label, onUpdate, options }) => {
     const BASE_CLASS_NAME = 'Select';
 
     // Dropdown State
@@ -47,7 +47,7 @@ const Select = ({ className, value, label, onUpdate, options, wide }) => {
                         <path d={getCurrentOptionPath()}/>
                     </svg>
                 </Input>
-                <Dropdown className={`${BASE_CLASS_NAME}__Dropdown`} isOpen={dropdownOpen} wide={wide}>
+                <Dropdown className={`${BASE_CLASS_NAME}__Dropdown`} isOpen={dropdownOpen}>
                     {options.map(option => (
                         <DropdownSvg
                             viewBox="0 0 50 50"
@@ -78,7 +78,6 @@ Select.propTypes = {
         value: PropTypes.string.isRequired,
         path: PropTypes.string.isRequired,
     })),
-    wide: PropTypes.bool,
 };
 
 Select.defaultProps = {
@@ -86,7 +85,6 @@ Select.defaultProps = {
     value: '',
     onUpdate: () => {},
     options: [],
-    wide: false,
 };
 
 export default Select;

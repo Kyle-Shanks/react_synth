@@ -254,7 +254,7 @@ class Synth extends React.Component {
         if (oct > -3) this.setState({ octaveMod: oct - 1});
     }
 
-    // Timeout clear in case I add more things with an envelope in the future (filter?)
+    // Timeout clear in case I add more things with an envelope in the future
     clearTimouts = () => {
         this.timeoutIds.forEach(id => clearTimeout(id));
         this.timeoutIds = [];
@@ -446,7 +446,6 @@ class Synth extends React.Component {
                                 }}
                                 value={this.state.vcoType}
                                 options={selectOptions.waveform}
-                                wide
                             />
                             <Knob
                                 label="Gain"
@@ -475,7 +474,6 @@ class Synth extends React.Component {
                                 }}
                                 value={this.state.sub1Type}
                                 options={selectOptions.waveform}
-                                wide
                             />
                             <Knob
                                 label="Gain"
@@ -521,7 +519,6 @@ class Synth extends React.Component {
                                 }}
                                 value={this.state.sub2Type}
                                 options={selectOptions.waveform}
-                                wide
                             />
                             <Knob
                                 label="Gain"
@@ -661,7 +658,6 @@ class Synth extends React.Component {
                                 }}
                                 value={this.state.filterType}
                                 options={selectOptions.filter}
-                                wide
                             />
                             <Knob
                                 label="Cutoff"
@@ -772,7 +768,6 @@ class Synth extends React.Component {
                                 }}
                                 value={this.state.reverbType}
                                 options={selectOptions.reverb}
-                                wide
                             />
                             <Knob
                                 label="Dry/Wet"
