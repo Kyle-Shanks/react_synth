@@ -1,6 +1,6 @@
 import Gain from './gain';
 
-// TODO: Need to update this to use AudioWorklet pattern. This is a deprecated method
+// TODO: createScriptProcessor is a deprecated method. Need to update this to use AudioWorklet pattern.
 class BitCrusher {
     constructor(AC) {
         this.AC = AC;

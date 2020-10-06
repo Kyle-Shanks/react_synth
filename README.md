@@ -12,7 +12,7 @@ This determines the time that the oscillator and subs take to glide to the next 
 An LFO linked to the frequencies of the oscillator and two subs
 #### Parameters
 * Rate - Frequency of the LFO
-* Depth - The range of the frequency modulation
+* Depth - The range of the pitch modulation
 
 ### Distortion (Drive)
 A Waveshaper node used to distort and beef up the signal

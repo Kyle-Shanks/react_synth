@@ -119,6 +119,7 @@ class Knob extends React.Component {
 Knob.propTypes = {
     className: PropTypes.string,
     color: PropTypes.string,
+    // Defines if it is a one way or two way knob
     type: PropTypes.oneOf([1,2]),
     onUpdate: PropTypes.func,
     value: PropTypes.number,

@@ -1,23 +1,23 @@
 export const getNoteFromKeyCode = (keyCode, octaveMod = 0) => {
     switch (keyCode) {
-        case 65: return 65 + (12 * octaveMod); break; // C   ┐
-        case 87: return 66 + (12 * octaveMod); break; // C#  │
-        case 83: return 67 + (12 * octaveMod); break; // D   │
-        case 69: return 68 + (12 * octaveMod); break; // Eb  │
-        case 68: return 69 + (12 * octaveMod); break; // E   │
-        case 70: return 70 + (12 * octaveMod); break; // F   │
-        case 84: return 71 + (12 * octaveMod); break; // F#  ├── The Keyboard
-        case 71: return 72 + (12 * octaveMod); break; // G   │
-        case 89: return 73 + (12 * octaveMod); break; // G#  │
-        case 72: return 74 + (12 * octaveMod); break; // A   │
-        case 85: return 75 + (12 * octaveMod); break; // Bb  │
-        case 74: return 76 + (12 * octaveMod); break; // B   │
-        case 75: return 77 + (12 * octaveMod); break; // C   ┘
+        case 65: return 65 + (12 * octaveMod); // C   ┐
+        case 87: return 66 + (12 * octaveMod); // C#  │
+        case 83: return 67 + (12 * octaveMod); // D   │
+        case 69: return 68 + (12 * octaveMod); // Eb  │
+        case 68: return 69 + (12 * octaveMod); // E   │
+        case 70: return 70 + (12 * octaveMod); // F   │
+        case 84: return 71 + (12 * octaveMod); // F#  ├── The Keyboard
+        case 71: return 72 + (12 * octaveMod); // G   │
+        case 89: return 73 + (12 * octaveMod); // G#  │
+        case 72: return 74 + (12 * octaveMod); // A   │
+        case 85: return 75 + (12 * octaveMod); // Bb  │
+        case 74: return 76 + (12 * octaveMod); // B   │
+        case 75: return 77 + (12 * octaveMod); // C   ┘
         // a little extra for added playability
-        case 79: return 78 + (12 * octaveMod); break;
-        case 76: return 79 + (12 * octaveMod); break;
-        case 80: return 80 + (12 * octaveMod); break;
-        case 186: return 81 + (12 * octaveMod); break;
+        case 79: return 78 + (12 * octaveMod);
+        case 76: return 79 + (12 * octaveMod);
+        case 80: return 80 + (12 * octaveMod);
+        case 186: return 81 + (12 * octaveMod);
         default: return false;
     };
 };

@@ -13,7 +13,7 @@ const Modal = ({ className, active, onClose }) => {
         >
             <ModalContainer onClick={e => e.stopPropagation()}>
                 <Header>- Info -</Header>
-                <p>Monophonic synthesizer built with JS Web Audio API and React bc I'm a dumb-dumb</p>
+                <p>Monophonic synthesizer built with JS Web Audio API and React</p>
                 <Header>- Top Bar Info -</Header>
                 <p>On the left is the octave modifier value for the keyboard.</p>
                 <p>The dropdown in the center is for synth presets.</p>
